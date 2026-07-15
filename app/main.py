@@ -1,7 +1,26 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.api.v1.router import api_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    import asyncio
+    import httpx
+
+    async def keep_alive():
+        while True:
+            try:
+                async with httpx.AsyncClient(timeout=5) as client:
+                    await client.get("https://apis-4g3r.onrender.com/")
+            except Exception:
+                pass
+            await asyncio.sleep(480)
+
+    asyncio.create_task(keep_alive())
+    yield
 
 
 def create_app() -> FastAPI:
@@ -10,7 +29,8 @@ def create_app() -> FastAPI:
         version=settings.APP_VERSION,
         description="API for generating business leads from Google Maps with email enrichment",
         docs_url="/docs",
-        redoc_url="/redoc"
+        redoc_url="/redoc",
+        lifespan=lifespan,
     )
 
     app.add_middleware(

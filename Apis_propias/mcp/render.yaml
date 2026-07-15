@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: gmaps-mcp
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server_http.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: SCRAPER_BASE_URL
+        value: https://apis-4g3r.onrender.com

@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Query, HTTPException
+from fastapi.responses import Response
 from app.services.maps_service import (
     search_google_maps, search_place_by_name,
     search_nearby, get_place_reviews,
@@ -113,3 +114,136 @@ async def get_reviews(
         raise
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Error fetching reviews: {str(e)}")
+
+
+@router.get("/niche/{niche}")
+async def search_niche(
+    niche: str,
+    location: str = Query("", description="City or region"),
+    limit: int = Query(20, ge=1, le=100),
+    enrich: bool = Query(False, description="Enrich with emails"),
+):
+    NICHE_MAP = {
+        "dentistas": "dentist",
+        "restaurantes": "restaurant",
+        "farmacias": "pharmacy",
+        "gimnasios": "gym",
+        "hoteles": "hotel",
+        "abogados": "lawyer",
+        "inmobiliarias": "real estate agency",
+        "clinicas": "medical clinic",
+        "veterinarias": "veterinary",
+        "talleres": "auto repair",
+        "panaderias": "bakery",
+        "cafeterias": "coffee shop",
+        "supermercados": "supermarket",
+        "librerias": "bookstore",
+        "floristerias": "florist",
+        "peluquerias": "hair salon",
+        "dentists": "dentist",
+        "restaurants": "restaurant",
+        "pharmacies": "pharmacy",
+        "gyms": "gym",
+        "hotels": "hotel",
+        "lawyers": "lawyer",
+        "clinics": "medical clinic",
+        "vet": "veterinary",
+        "mechanics": "auto repair",
+        "bakeries": "bakery",
+        "cafes": "coffee shop",
+        "markets": "supermarket",
+        "bookstores": "bookstore",
+        "florists": "florist",
+        "salons": "hair salon",
+    }
+    query = NICHE_MAP.get(niche.lower(), niche)
+
+    if not settings.SERPER_API_KEY:
+        raise HTTPException(status_code=500, detail="SERPER_API_KEY not configured")
+
+    try:
+        result = await search_google_maps(query=query, location=location, limit=limit)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Error: {str(e)}")
+
+    if enrich:
+        enriched = []
+        for biz in result.results:
+            if biz.website:
+                try:
+                    enrichment = await enrich_business(biz.website)
+                    biz.enrichment = enrichment
+                except Exception:
+                    pass
+            enriched.append(biz)
+        result.results = enriched
+
+    return result
+
+
+@router.get("/niche/{niche}/export")
+async def export_niche_csv(
+    niche: str,
+    location: str = Query("", description="City or region"),
+    limit: int = Query(50, ge=1, le=200),
+):
+    if not settings.SERPER_API_KEY:
+        raise HTTPException(status_code=500, detail="SERPER_API_KEY not configured")
+
+    NICHE_MAP = {
+        "dentistas": "dentist", "restaurantes": "restaurant", "farmacias": "pharmacy",
+        "gimnasios": "gym", "hoteles": "hotel", "abogados": "lawyer",
+        "clinicas": "medical clinic", "veterinarias": "veterinary", "talleres": "auto repair",
+        "dentists": "dentist", "restaurants": "restaurant", "pharmacies": "pharmacy",
+        "gyms": "gym", "hotels": "hotel", "lawyers": "lawyer",
+    }
+    query = NICHE_MAP.get(niche.lower(), niche)
+
+    try:
+        result = await search_google_maps(query=query, location=location, limit=limit)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Error: {str(e)}")
+
+    lines = ["Name,Category,Address,Phone,Website,Rating,Reviews,Google Maps URL"]
+    for biz in result.results:
+        name = (biz.name or "").replace(",", ";")
+        cat = (biz.category or "").replace(",", ";")
+        addr = (biz.address or "").replace(",", ";")
+        phone = biz.phone or ""
+        web = biz.website or ""
+        rating = biz.rating or ""
+        reviews = biz.reviews_count or ""
+        gurl = biz.google_maps_url or ""
+        lines.append(f'"{name}","{cat}","{addr}","{phone}","{web}","{rating}","{reviews}","{gurl}"')
+
+    csv_content = "\n".join(lines)
+    return Response(
+        content=csv_content,
+        media_type="text/csv",
+        headers={"Content-Disposition": f'attachment; filename="{niche}_leads.csv"'},
+    )
+
+
+@router.get("/niches")
+async def list_niches():
+    return {
+        "niches": [
+            {"id": "dentistas", "name": "Dentistas", "icon": "dentist"},
+            {"id": "restaurantes", "name": "Restaurantes", "icon": "restaurant"},
+            {"id": "farmacias", "name": "Farmacias", "icon": "pharmacy"},
+            {"id": "gimnasios", "name": "Gimnasios", "icon": "gym"},
+            {"id": "hoteles", "name": "Hoteles", "icon": "hotel"},
+            {"id": "abogados", "name": "Abogados", "icon": "lawyer"},
+            {"id": "clinicas", "name": "Clínicas", "icon": "clinic"},
+            {"id": "veterinarias", "name": "Veterinarias", "icon": "vet"},
+            {"id": "talleres", "name": "Talleres", "icon": "mechanic"},
+            {"id": "panaderias", "name": "Panaderías", "icon": "bakery"},
+            {"id": "cafeterias", "name": "Cafeterías", "icon": "coffee"},
+            {"id": "supermercados", "name": "Supermercados", "icon": "market"},
+            {"id": "peluquerias", "name": "Peluquerías", "icon": "salon"},
+            {"id": "floristerias", "name": "Floristerías", "icon": "florist"},
+            {"id": "librerias", "name": "Librerías", "icon": "bookstore"},
+        ],
+        "usage": "/v1/maps/niche/dentistas?location=Madrid&enrich=true",
+        "export": "/v1/maps/niche/dentistas/export?location=Madrid&limit=50",
+    }

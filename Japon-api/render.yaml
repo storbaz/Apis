@@ -9,3 +9,9 @@ services:
         generateValue: true
       - key: PYTHON_VERSION
         value: "3.11.0"
+      - key: SUPABASE_URL
+        sync: false
+        value: "https://mckegnheeouqdwjgztgc.supabase.co"
+      - key: SUPABASE_KEY
+        sync: false
+        value: "sb_publishable_PbGLIZxXbnLDfwAn3E4asg_iXIGu7KC"

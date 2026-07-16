@@ -56,7 +56,11 @@ async def search_google_maps(query: str, location: str = "", limit: int = 20) ->
             reviews_count=item.get("ratingCount"),
             coordinates=coordinates,
             hours=None,
-            is_claimed=None
+            is_claimed=None,
+            service_options=item.get("serviceOptions"),
+            price_level=item.get("price"),
+            thumbnail_url=item.get("thumbnailUrl"),
+            google_maps_url=item.get("placeId"),
         )
         results.append(result)
 

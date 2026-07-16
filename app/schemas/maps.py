@@ -49,6 +49,10 @@ class BusinessResult(BaseModel):
     hours: Optional[Hours] = None
     is_claimed: Optional[bool] = None
     enrichment: Optional[Enrichment] = None
+    service_options: Optional[dict] = None
+    price_level: Optional[str] = None
+    thumbnail_url: Optional[str] = None
+    google_maps_url: Optional[str] = None
 
 
 class Pagination(BaseModel):

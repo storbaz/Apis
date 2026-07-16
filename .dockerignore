@@ -1,0 +1,26 @@
+chainsight-api/
+.git/
+.gitignore
+__pycache__/
+*.pyc
+*.pyo
+.env
+.vscode/
+.idea/
+.pytest_cache/
+test_api.py
+test_live.py
+test_render.py
+*.html
+!docs/index.html
+*_files/
+*.jfif
+*.png
+*.jpg
+*.svg
+Dockerfile
+render.yaml
+docs/
+marketing/
+Logo design for Lead Scraper – Figma Make_files/
+Logo design for Lead Scraper – Figma Make.html

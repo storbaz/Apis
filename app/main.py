@@ -14,7 +14,7 @@ async def lifespan(app: FastAPI):
         while True:
             try:
                 async with httpx.AsyncClient(timeout=5) as client:
-                    await client.get("https://apis-4g3r.onrender.com/")
+                    await client.get("https://apis-4g3r.onrender.com/ping")
             except Exception:
                 pass
             await asyncio.sleep(480)
@@ -42,6 +42,10 @@ def create_app() -> FastAPI:
     )
 
     app.include_router(api_router)
+
+    @app.api_route("/ping", methods=["GET", "HEAD"])
+    async def ping():
+        return {"ping": "pong"}
 
     @app.get("/")
     async def root():

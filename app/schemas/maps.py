@@ -72,6 +72,20 @@ class SearchRequest(BaseModel):
     limit: int = 20
 
 
+class Review(BaseModel):
+    author: str
+    rating: Optional[int] = None
+    text: Optional[str] = None
+    time: Optional[str] = None
+    profile_image: Optional[str] = None
+
+
+class ReviewsResponse(BaseModel):
+    place_id: str
+    reviews: list[Review]
+    total: int
+
+
 class PlaceRequest(BaseModel):
     place_id: str
     enrich: bool = False

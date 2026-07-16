@@ -120,8 +120,176 @@ FOOD_GUIDE = {
                 "tip": "Cómpralo para llevar y comer en el avion"
             }
         ]
+    },
+    "hokkaido": {
+        "city": "Hokkaido",
+        "specialties": [
+            {
+                "name": "Mariscos frescos",
+                "description": "Cangrejo, pulpo, salmon, uni (erizo). Los mas frescos de Japon.",
+                "where": ["Sapporo", "Otaru", "Hakodate"],
+                "price_range": "$$-$$$$",
+                "tip": "El mercado de Nijo en Sapporo tiene los mejores precios"
+            },
+            {
+                "name": "Genghis Khan (Jingisukan)",
+                "description": "Cordero a la parrilla en forma de domo. Plato tipico de Hokkaido.",
+                "where": ["Sapporo", "Odori Park"],
+                "price_range": "$$",
+                "tip": "Es una experiencia communal, se come en grupo"
+            },
+            {
+                "name": "Ramen Miso",
+                "description": "El ramen de miso de Sapporo es el mas famoso de Japon.",
+                "where": ["Sapporo", "Ramen Yokocho"],
+                "price_range": "$",
+                "tip": "Ramen Yokocho tiene docenas de shops en una calle"
+            }
+        ]
+    },
+    "okinawa": {
+        "city": "Okinawa",
+        "specialties": [
+            {
+                "name": "Rafute",
+                "description": "Cerdo estofado en salsa de soja y awamori. Plato tradicional Ryukyu.",
+                "where": ["Naha", "Kokusai Dori"],
+                "price_range": "$$",
+                "tip": "La cocina de Okinawa es muy diferente a la japonesa"
+            },
+            {
+                "name": "Soki Soba",
+                "description": "Fideos con costillas de cerdo. El plato mas popular de Okinawa.",
+                "where": ["Naha", "Toda"],
+                "price_range": "$",
+                "tip": "No confundir con el ramen, es un plato distinto"
+            },
+            {
+                "name": "Taco Rice",
+                "description": "Arroz con taco de carne molida. Fusion americano-japonesa.",
+                "where": ["Chatan", "Araha Beach"],
+                "price_range": "$",
+                "tip": "Nacido de la influencia militar americana"
+            }
+        ]
+    },
+    "nara": {
+        "city": "Nara",
+        "specialties": [
+            {
+                "name": "Kakinoha Sushi",
+                "description": "Sushi envuelto en hojas de kaki (caqui). Conservacion natural.",
+                "where": ["Naramachi", "Estacion de Nara"],
+                "price_range": "$$",
+                "tip": "Es el souvenir gastronomico mas tipico de Nara"
+            },
+            {
+                "name": "Miwa Somen",
+                "description": "Fideos finos de la zona de Miwa. Los mejores de Japon.",
+                "where": ["Miwa", "Sakurai"],
+                "price_range": "$$",
+                "tip": "Se sirven frios en verano, calientes en invierno"
+            }
+        ]
+    },
+    "kanazawa": {
+        "city": "Kanazawa",
+        "specialties": [
+            {
+                "name": "Kaisen Don",
+                "description": "Bol de arroz con mariscos frescos del Mar de Japon.",
+                "where": ["Omicho Market", "Korinbo"],
+                "price_range": "$$-$$$$",
+                "tip": "Omicho Market tiene los mejores precios y frescura"
+            },
+            {
+                "name": "Jibuni",
+                "description": "Pato estofado con wasabi y gluten. Plato tipico de Kanazawa.",
+                "where": ["Restaurante tradicionales"],
+                "price_range": "$$",
+                "tip": "Es un plato antiguo que no encontraras en otro sitio"
+            },
+            {
+                "name": "Gold Leaf Ice Cream",
+                "description": "Helado cubierto con hoja de oro comestible. Especalidad local.",
+                "where": ["Higashi Chaya", "Kenroku-en"],
+                "price_range": "$",
+                "tip": "Kanazawa produce el 99% del oro leaf de Japon"
+            }
+        ]
     }
 }
+
+KONBINI_GUIDE = {
+    "description": "Los konbini (tiendas de conveniencia) son una experiencia gastronomica en si mismos. Tienen comida de calidad a precios bajos.",
+    "chains": [
+        {
+            "name": "7-Eleven",
+            "specialties": ["Onigiri", "Sandwiches de huevo", "Oden", "Cafe"],
+            "tip": "Los onigiri son los mejores de todos los konbini"
+        },
+        {
+            "name": "FamilyMart",
+            "specialties": ["Famichiki (pollo frito)", "Melon pan", "Takoyaki"],
+            "tip": "El Famichiki es el pollo frito mas famoso de Japon"
+        },
+        {
+            "name": "Lawson",
+            "specialties": ["Uchi cafe (dulces)", "Edamame", "Oyakodon"],
+            "tip": "Los postres Uchi Cafe son sorprendentemente buenos"
+        },
+        {
+            "name": "Mini Stop",
+            "specialties": ["Soft serve", "Bento economicos", "Cafe"],
+            "tip": "El soft serve es famoso por su calidad"
+        }
+    ],
+    "best_items": [
+        {"name": "Onigiri", "price": "120-180 yen", "description": "Bolas de arroz con relleno. El snack perfecto."},
+        {"name": "Bento", "price": "400-800 yen", "description": "Cajas de comida completas. Mejor opcion barata."},
+        {"name": "Oden", "price": "100-200 yen", "description": "Caldo caliente con verduras y carne. Perfecto en invierno."},
+        {"name": "Egg sandwich", "price": "200-300 yen", "description": "El sandwich de huevo de konbini es leggendario."},
+        {"name": "Famichiki", "price": "200-300 yen", "description": "Pollo frito crujiente. El mejor snack de convenience store."},
+        {"name": "Strong Zero", "price": "150-200 yen", "description": "Chu-hai (bebida alcoholica) fuerte y barata. Cuidado!"}
+    ]
+}
+
+DIETARY_OPTIONS = {
+    "vegan": {
+        "description": "Japon no es facil para veganos, pero hay opciones",
+        "options": [
+            {"name": "Shojin Ryori", "description": "Cocina budista, 100% vegetal. Templos en Kyoto."},
+            {"name": "Tofu dishes", "description": "Kyoto es el mejor lugar para tofu vegano."},
+            {"name": "Vegetable tempura", "description": "Verduras fritas. Pide que no usen dashi."},
+            {"name": "Ramen vegano", "description": "Algunos shops tienen opciones de caldo de vegetales."},
+            {"name": "Konbini options", "description": "Busca 'yasai' (verduras) en los konbini."}
+        ],
+        "tips": [
+            "Aprende a decir 'bejitarian desu' (soy vegetariano)",
+            "El dashi (caldo base) usualmente tiene pescado",
+            "En Kyoto hay mas opciones veganas que en cualquier otra ciudad",
+            "Descarga HappyCow para encontrar restaurants veganos"
+        ]
+    },
+    "gluten_free": {
+        "description": "Japon usa mucho gluten, pero hay opciones naturales",
+        "options": [
+            {"name": "Sushi", "description": "Naturalmente sin gluten (cuidado con la soja)."},
+            {"name": "Yakitori", "description": "Pollo a la parrilla. Pide sin salsa tare."},
+            {"name": "Grilled fish", "description": "Pescado a la parrilla. Naturalmente seguro."},
+            {"name": "Rice dishes", "description": "Arroz, onigiri, sushi. Base segura."},
+            {"name": "Tamagoyaki", "description": "Tortilla japonesa. Generalmente segura."}
+        ],
+        "tips": [
+            "Aprende 'mu-tan' (sin trigo) y 'guten furi' (sin gluten)",
+            "El shoyu (soja) contiene trigo, busca 'tamari' (sin trigo)",
+            "Los fideos de arroz son seguros",
+            "Muchos restaurants modernos tienen opciones sin gluten"
+        ]
+    }
+}
+
+
 
 ETIQUETTA_RESTAURANTES = [
     {
@@ -208,3 +376,13 @@ async def all_dishes():
         "total": len(all_dishes_list),
         "dishes": all_dishes_list
     }
+
+
+@router.get("/konbini")
+async def konbini_guide():
+    return KONBINI_GUIDE
+
+
+@router.get("/dietary")
+async def dietary_options():
+    return DIETARY_OPTIONS

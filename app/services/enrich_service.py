@@ -1,6 +1,6 @@
 import httpx
 import re
-from bs4 import BeautifulSoup
+import asyncio
 from app.schemas.maps import Enrichment, EmailInfo, SocialLinks
 from app.services.email_service import extract_emails_from_html, verify_emails_batch
 
@@ -83,7 +83,7 @@ async def enrich_business(website: str | None) -> Enrichment:
     emails_raw, social = await scrape_website_for_emails(website)
 
     if emails_raw:
-        verified = verify_emails_batch(emails_raw)
+        verified = await asyncio.to_thread(verify_emails_batch, emails_raw)
     else:
         verified = []
 

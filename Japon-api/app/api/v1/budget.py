@@ -80,6 +80,58 @@ CITIES_BUDGET = {
             "El subway tiene passes de 1 dia baratos",
             "Los mercados locales tienen comida fresca barata"
         ]
+    },
+    "hokkaido": {
+        "city": "Hokkaido",
+        "daily_budget_low": 7000,
+        "daily_budget_medium": 13000,
+        "daily_budget_high": 25000,
+        "currency": "JPY",
+        "tips": [
+            "El marisco aqui es el mas barato y fresco de Japon",
+            "El melon de Yubari es una delicia cara pero vale la pena",
+            "Los parques nacionales son gratis o muy baratos",
+            "En invierno, los skiing resorts tienen passes economicos"
+        ]
+    },
+    "okinawa": {
+        "city": "Okinawa",
+        "daily_budget_low": 6500,
+        "daily_budget_medium": 12000,
+        "daily_budget_high": 22000,
+        "currency": "JPY",
+        "tips": [
+            "La comida local (ryukyu cuisine) es mas barata que la japonesa",
+            "El alquiler de coche es la mejor forma de moverse",
+            "Las playas son gratis",
+            "Los mercados de Naha tienen comida barata y exotica"
+        ]
+    },
+    "nara": {
+        "city": "Nara",
+        "daily_budget_low": 5500,
+        "daily_budget_medium": 10000,
+        "daily_budget_high": 18000,
+        "currency": "JPY",
+        "tips": [
+            "Los parques principales son gratis",
+            "Puedes comprar galletas para los ciervos (200 yen)",
+            "El dia se puede hacer en un viaje desde Kyoto/Osaka",
+            "Muchos templos tienen entrada gratuita"
+        ]
+    },
+    "kanazawa": {
+        "city": "Kanazawa",
+        "daily_budget_low": 6000,
+        "daily_budget_medium": 11000,
+        "daily_budget_high": 20000,
+        "currency": "JPY",
+        "tips": [
+            "El Kenroku-en es uno de los 3 jardines mas bonitos de Japon",
+            "El seafood aqui es excepcional y mas barato que Tokyo",
+            "El bus turistico de 1 dia es muy economico",
+            "Los barrios de samurais son gratis de recorrer"
+        ]
     }
 }
 

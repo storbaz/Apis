@@ -115,8 +115,147 @@ CITY_CONNECTIONS = [
         "price_jpy": 820,
         "frequency": "Cada 30 minutos",
         "tips": "JR Pass cubre esta ruta. Nara es perfecta para ver los ciervos."
+    },
+    {
+        "from": "Tokyo",
+        "to": "Hokkaido (Sapporo)",
+        "train": "Shinkansen + Hokkaido Shinkansen",
+        "duration": "4h (Hayabusa + Hokkaido)",
+        "price_jpy": 27760,
+        "frequency": "Cada hora",
+        "tips": "JR Pass cubre esta ruta. Es un viaje largo pero valioso."
+    },
+    {
+        "from": "Osaka",
+        "to": "Hokkaido (Sapporo)",
+        "train": "Vuelo domestic (Peach/Jetstar)",
+        "duration": "2h vuelo",
+        "price_jpy": 5000,
+        "frequency": "Varios vuelos diarios",
+        "tips": "El vuelo es mas rapido y a veces mas barato que el tren."
+    },
+    {
+        "from": "Fukuoka",
+        "to": "Hiroshima",
+        "train": "Shinkansen (Sakura)",
+        "duration": "1h",
+        "price_jpy": 8500,
+        "frequency": "Cada 30 minutos",
+        "tips": "JR Pass cubre esta ruta. Ruta muy turistica."
+    },
+    {
+        "from": "Kyoto",
+        "to": "Nara",
+        "train": "JR Nara Line o Kintetsu",
+        "duration": "45 min (JR) / 35 min (Kintetsu)",
+        "price_jpy": 720,
+        "frequency": "Cada 30 minutos",
+        "tips": "Kintetsu es mas rapido pero no cubierto por JR Pass."
     }
 ]
+
+AIRPORTS = [
+    {
+        "name": "Narita International Airport (NRT)",
+        "city": "Tokyo",
+        "code": "NRT",
+        "distance_to_city": "60 km",
+        "transport_to_city": [
+            {"name": "Narita Express (JR)", "duration": "60 min", "price": 3250, "covered_by_jrpass": True},
+            {"name": "Skyliner (Keisei)", "duration": "41 min", "price": 2520, "covered_by_jrpass": False},
+            {"name": "Airport Limousine Bus", "duration": "85 min", "price": 3200, "covered_by_jrpass": False}
+        ],
+        "tips": "El Narita Express es la mejor opcion si tienes JR Pass."
+    },
+    {
+        "name": "Haneda Airport (HND)",
+        "city": "Tokyo",
+        "code": "HND",
+        "distance_to_city": "15 km",
+        "transport_to_city": [
+            {"name": "Keikyu Line", "duration": "15 min", "price": 300, "covered_by_jrpass": False},
+            {"name": "Tokyo Monorail", "duration": "18 min", "price": 500, "covered_by_jrpass": True},
+            {"name": "Bus", "duration": "30-60 min", "price": 1000, "covered_by_jrpass": False}
+        ],
+        "tips": "Haneda esta mucho mas cerca que Narita. Es mejor si vuelas domestico."
+    },
+    {
+        "name": "Kansai International Airport (KIX)",
+        "city": "Osaka",
+        "code": "KIX",
+        "distance_to_city": "50 km",
+        "transport_to_city": [
+            {"name": "JR Haruka", "duration": "50 min", "price": 3640, "covered_by_jrpass": True},
+            {"name": "Nankai Rapi:t", "duration": "38 min", "price": 1450, "covered_by_jrpass": False},
+            {"name": "Airport Limousine Bus", "duration": "70 min", "price": 1600, "covered_by_jrpass": False}
+        ],
+        "tips": "El Nankai Rapi:t es mas barato y rapidísimo. Diseño retro-futurista."
+    },
+    {
+        "name": "New Chitose Airport (CTS)",
+        "city": "Hokkaido (Sapporo)",
+        "code": "CTS",
+        "distance_to_city": "60 km",
+        "transport_to_city": [
+            {"name": "JR Rapid Airport", "duration": "37 min", "price": 1150, "covered_by_jrpass": True},
+            {"name": "Bus", "duration": "80 min", "price": 1100, "covered_by_jrpass": False}
+        ],
+        "tips": "El aeropuerto tiene un acuario y un parque de nieve en invierno."
+    },
+    {
+        "name": "Naha Airport (OKA)",
+        "city": "Okinawa",
+        "code": "OKA",
+        "distance_to_city": "6 km",
+        "transport_to_city": [
+            {"name": "Yui Rail (monorail)", "duration": "15 min", "price": 270, "covered_by_jrpass": False},
+            {"name": "Bus", "duration": "20-40 min", "price": 300, "covered_by_jrpass": False}
+        ],
+        "tips": "En Okinawa necesitas alquilar coche. El monorail solo va hasta Naha."
+    },
+    {
+        "name": "Fukuoka Airport (FUK)",
+        "city": "Fukuoka",
+        "code": "FUK",
+        "distance_to_city": "5 km",
+        "transport_to_city": [
+            {"name": "Subway", "duration": "5 min", "price": 260, "covered_by_jrpass": False},
+            {"name": "Bus", "duration": "15 min", "price": 300, "covered_by_jrpass": False}
+        ],
+        "tips": "El aeropuerto mas cercano al centro de cualquier ciudad japonesa."
+    }
+]
+
+CAR_RENTAL = {
+    "description": "Alquilar coche en Japon es ideal para zonas rurales (Hokkaido, Okinawa, Nara).",
+    "requirements": [
+        "Permiso de conducir internacional (IDP)",
+        "Pasaporte",
+        "Tarjeta de credito",
+        "Edad minima: 18-21 anos (varia por empresa)"
+    ],
+    "companies": [
+        {"name": "Times Car Rental", "tip": "La mas popular y con mas sucursales"},
+        {"name": "Nippon Rent-a-Car", "tip": "Buena calidad y servicio"},
+        {"name": "Orix Rent-a-Car", "tip": "Precios competitivos"},
+        {"name": "Toyota Rent-a-Car", "tip": "Coches nuevos y fiables"}
+    ],
+    "driving_tips": [
+        "Conducir por la izquierda",
+        "Los limites de velocidad son 60-80 km/h en carretera",
+        "Las autopistas son caras pero rapidas",
+        "El parking en ciudades es caro",
+        "Los konbini tienen cajeros para pagar gasolina"
+    ],
+    "best_regions_for_driving": [
+        {"region": "Hokkaido", "reason": "Carreteras vacias y paisajes increibles"},
+        {"region": "Okinawa", "reason": "Sin tren, necesitas coche para moverte"},
+        {"region": "Nara", "reason": "Para visitar templos remotos"},
+        {"region": "Nagano", "reason": "Para acceder a los snow monkeys y templos"}
+    ]
+}
+
+
 
 TRANSPORT_TIPS = [
     {
@@ -196,3 +335,20 @@ async def transport_tips():
         "total": len(TRANSPORT_TIPS),
         "tips": TRANSPORT_TIPS
     }
+
+
+@router.get("/airports")
+async def airports(
+    city: Optional[str] = Query(None, description="Ciudad de Japon")
+):
+    if city:
+        city_lower = city.lower()
+        result = [a for a in AIRPORTS if city_lower in a["city"].lower()]
+        return {"city": city, "airports": result}
+
+    return {"total": len(AIRPORTS), "airports": AIRPORTS}
+
+
+@router.get("/car-rental")
+async def car_rental():
+    return CAR_RENTAL

@@ -1,0 +1,73 @@
+{
+  "source": "JNTO / Japan Government",
+  "last_updated": "2026-07-21",
+  "visitors": {
+    "total_2024": 36870000,
+    "total_2023": 25066000,
+    "growth_yoy": "47%",
+    "record_year": 2024,
+    "note": "Récord histórico superando los 31.9M de pre-pandemia (2019)"
+  },
+  "spending": {
+    "avg_daily_per_tourist": 148,
+    "avg_daily_food": 46,
+    "avg_daily_accommodation": 55,
+    "avg_daily_transport": 20,
+    "avg_daily_shopping": 27,
+    "currency": "EUR",
+    "note": "Basado en encuesta JNTO 2024 a turistas internacionales"
+  },
+  "duration": {
+    "avg_nights": 7.2,
+    "most_popular": "7-8 noches",
+    "note": "Turistas internacionales excluyendo China"
+  },
+  "popular_destinations": [
+    {
+      "name": "Tokio",
+      "share": "48%"
+    },
+    {
+      "name": "Osaka",
+      "share": "32%"
+    },
+    {
+      "name": "Kioto",
+      "share": "28%"
+    },
+    {
+      "name": "Hiroshima",
+      "share": "15%"
+    },
+    {
+      "name": "Nara",
+      "share": "12%"
+    },
+    {
+      "name": "Fukuoka",
+      "share": "10%"
+    },
+    {
+      "name": "Kanazawa",
+      "share": "8%"
+    }
+  ],
+  "seasonality": {
+    "peak": "Marzo-Abril (sakura) y Octubre-Noviembre (koyo)",
+    "chill": "Enero-Febrero (menos turistas, más barato)",
+    "hot": "Julio-Agosto (caluroso, festivales de verano)",
+    "note": "Golden Week (28 abril-6 mayo) es la semana más cara"
+  },
+  "jr_pass": {
+    "price_7d": 50000,
+    "price_14d": 80000,
+    "price_21d": 100000,
+    "currency": "JPY",
+    "note": "Precios desde octubre 2023 (incremento del 69%)"
+  },
+  "exchange_rate": {
+    "jpy_to_eur": 0.00539,
+    "last_fetched": "2026-07-21T11:27:14.817092",
+    "eur_to_jpy": 185.516035
+  }
+}

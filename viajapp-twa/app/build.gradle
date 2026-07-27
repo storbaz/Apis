@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'app.viajapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "app.viajapp"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("${rootProject.projectDir}/viajapp-release.keystore")
+            storePassword System.getenv("BUBBLEWRAP_KEYSTORE_PASSWORD") ?: "viajapp2026"
+            keyAlias "viajapp"
+            keyPassword System.getenv("BUBBLEWRAP_KEY_PASSWORD") ?: "viajapp2026"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.browser:browser:1.7.0'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.core:core:1.12.0'
+}

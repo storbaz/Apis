@@ -5,13 +5,5 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
-      - key: SECRET_KEY
-        generateValue: true
       - key: PYTHON_VERSION
         value: "3.11.0"
-      - key: SUPABASE_URL
-        sync: false
-        value: "https://mckegnheeouqdwjgztgc.supabase.co"
-      - key: SUPABASE_KEY
-        sync: false
-        value: "sb_publishable_PbGLIZxXbnLDfwAn3E4asg_iXIGu7KC"

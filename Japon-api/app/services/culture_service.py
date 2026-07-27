@@ -60,7 +60,7 @@ PHRASES_DATA = {
             "pronunciation_tip": "Oh-neh-gai shee-mass"
         },
         {
-            "japanese": " Excuse me / Perdoname",
+            "japanese": "失礼します",
             "romaji": "Shitsurei shimasu",
             "translation": "Disculpe (para irse o interrumpir)",
             "context": "Cuando te vas de un lugar o interrumpes a alguien",
@@ -164,11 +164,11 @@ PHRASES_DATA = {
     ],
     "transporte": [
         {
-            "japanese": "すみません、○○はどこですか？",
-            "romaji": "Sumimasen, ○○ wa doko desu ka?",
-            "translation": "Perdon, donde esta ○○?",
-            "context": "Para preguntar ubicacion",
-            "pronunciation_tip": "Soo-mee-mass, oh oh wah doh koh desu kah?"
+            "japanese": "すみません、トイレはどこですか？",
+            "romaji": "Sumimasen, toire wa doko desu ka?",
+            "translation": "Perdon, donde esta el bano?",
+            "context": "Para preguntar ubicacion (ej: bano, estacion, salida)",
+            "pronunciation_tip": "Soo-mee-mah-sen, toh-ee-reh wah doh koh desu kah?"
         },
         {
             "japanese": "駅はどこですか？",
@@ -178,11 +178,11 @@ PHRASES_DATA = {
             "pronunciation_tip": "Eh-kee wah doh koh desu kah?"
         },
         {
-            "japanese": "この電車は○○に行きますか？",
-            "romaji": "Kono densha wa ○○ ni ikimasu ka?",
-            "translation": "Este tren va a ○○?",
-            "context": "Para confirmar la direccion del tren",
-            "pronunciation_tip": "Koh-noh dehn-shah wah oh oh nee ee-kee-mass kah?"
+            "japanese": "この電車は東京に行きますか？",
+            "romaji": "Kono densha wa Tokyo ni ikimasu ka?",
+            "translation": "Este tren va a Tokio?",
+            "context": "Para confirmar la direccion del tren (cambia Tokyo por tu destino)",
+            "pronunciation_tip": "Koh-noh dehn-shah wah Toh-kyoh nee ee-kee-mass kah?"
         },
         {
             "japanese": "どちらが近いですか？",

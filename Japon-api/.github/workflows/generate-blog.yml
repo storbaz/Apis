@@ -1,0 +1,30 @@
+name: Auto Generate Blog Post
+
+on:
+  schedule:
+    # Cada 7 días (lunes a las 10:00 AM UTC)
+    - cron: '0 10 * * 1'
+  workflow_dispatch: # Para ejecutar manualmente
+
+jobs:
+  generate-post:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Generate new blog post
+        run: |
+          echo "Generando nuevo post del blog..."
+          response=$(curl -s -X POST https://japan-travel-api.onrender.com/v1/blog/generate)
+          echo "Response: $response"
+          
+          # Verificar si se publicó
+          if echo "$response" | grep -q '"published":true'; then
+            echo "✅ Post generado exitosamente"
+          else
+            echo "⚠️ No se generó nuevo post (puede que no haya más en el pool)"
+          fi
+
+      - name: Check blog stats
+        run: |
+          echo "Estadísticas del blog:"
+          curl -s https://japan-travel-api.onrender.com/v1/blog/stats

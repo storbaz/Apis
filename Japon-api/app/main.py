@@ -8,7 +8,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title=settings.APP_NAME,
         version=settings.APP_VERSION,
-        description="API completa para viajeros a Japon: guia cultural, presupuesto, eventos, transporte, comida y emergencias",
+        description="API completa para viajeros a Japon",
         docs_url="/docs",
         redoc_url="/redoc",
     )
@@ -36,7 +36,10 @@ def create_app() -> FastAPI:
                 "events": "/v1/events",
                 "transport": "/v1/transport",
                 "food": "/v1/food",
-                "emergency": "/v1/emergency"
+                "emergency": "/v1/emergency",
+                "weather": "/v1/weather",
+                "favorites": "/v1/favorites",
+                "itineraries": "/v1/itineraries",
             }
         }
 

@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 import httpx
+from app.config import settings
 
 router = APIRouter(prefix="/weather", tags=["weather"])
 
@@ -34,6 +35,9 @@ async def get_weather(city: str):
     if not city_data:
         return {"error": f"Ciudad '{city}' no encontrada. Disponibles: {', '.join(CITIES.keys())}"}
 
+    if not settings.OPENWEATHER_API_KEY:
+        return _generate_mock_weather(city_data)
+
     try:
         async with httpx.AsyncClient() as client:
             current = await client.get(
@@ -41,7 +45,7 @@ async def get_weather(city: str):
                 params={
                     "lat": city_data["lat"],
                     "lon": city_data["lon"],
-                    "appid": "demo",
+                    "appid": settings.OPENWEATHER_API_KEY,
                     "units": "metric",
                     "lang": "es",
                 },
@@ -57,7 +61,7 @@ async def get_weather(city: str):
                 params={
                     "lat": city_data["lat"],
                     "lon": city_data["lon"],
-                    "appid": "demo",
+                    "appid": settings.OPENWEATHER_API_KEY,
                     "units": "metric",
                     "lang": "es",
                 },
@@ -126,4 +130,5 @@ def _generate_mock_weather(city_data: dict):
         "icon": random.choice(icons),
         "wind": round(random.uniform(1, 8), 1),
         "forecast": forecast,
+        "mock": True,
     }

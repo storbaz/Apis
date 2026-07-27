@@ -1,0 +1,33 @@
+name: Auto Post to Dev.to
+
+on:
+  schedule:
+    # Cada 2 semanas (lunes a las 10:00 AM UTC)
+    - cron: '0 10 * * 1'
+  workflow_dispatch: # Para ejecutar manualmente
+
+jobs:
+  post-to-devto:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Post to Dev.to
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: python scripts/post_to_devto.py
+
+      - name: Check blog stats
+        run: |
+          echo "Estadísticas del blog:"
+          curl -s https://japan-travel-api.onrender.com/v1/blog/stats

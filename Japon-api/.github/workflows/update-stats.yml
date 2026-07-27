@@ -1,0 +1,36 @@
+name: Update Japan Tourism Stats
+
+on:
+  schedule:
+    - cron: "0 10 1 * *"  # Every 1st of the month at 10:00 UTC
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run stats updater
+        run: python scripts/update_stats.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "ViajApp Bot"
+          git config user.email "bot@viajapp.app"
+          git add data/japan_stats.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update tourism stats [auto]"
+            git push
+          fi

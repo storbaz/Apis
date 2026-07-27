@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ViajApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#DC2626</item>
+        <item name="android:navigationBarColor">#1E1E2E</item>
+        <item name="android:windowBackground">#0F0F1A</item>
+        <item name="colorPrimary">#DC2626</item>
+        <item name="colorPrimaryVariant">#B91C1C</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#3B82F6</item>
+        <item name="colorSecondaryVariant">#2563EB</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.ViajApp.Splash" parent="Theme.ViajApp">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+</resources>

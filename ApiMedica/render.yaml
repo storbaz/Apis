@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: commoditydata-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: alembic upgrade head; uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: commoditydata-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: DEBUG
+        value: "false"
+      - key: FRONTEND_URL
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_PRO_PRICE_ID
+        sync: false
+      - key: STRIPE_ENTERPRISE_PRICE_ID
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: POSTHOG_API_KEY
+        sync: false
+      - key: SENTRY_DSN
+        sync: false
+      - key: USDA_FAS_API_KEY
+        sync: false
+      - key: FRED_API_KEY
+        sync: false
+  - type: pgsql
+    name: commoditydata-db
+    plan: free

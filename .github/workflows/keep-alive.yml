@@ -8,5 +8,9 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - run: echo "Hello"
+      - name: Ping LeadGen API
+        run: |
+          curl -s -o /dev/null --connect-timeout 30 --max-time 60 https://apis-4g3r.onrender.com/ping || true
+          echo "Pinged at $(date)"

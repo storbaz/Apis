@@ -1,4 +1,4 @@
-name: Keep LeadGen Alive
+name: Keep Alive
 
 on:
   schedule:
@@ -8,10 +8,5 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
-      - name: Ping LeadGen API
-        run: |
-          curl -s -o /dev/null --connect-timeout 30 --max-time 60 https://apis-4g3r.onrender.com/ping || true
-          echo "API pinged at $(date)"
-        shell: bash
+      - run: echo "Hello"
